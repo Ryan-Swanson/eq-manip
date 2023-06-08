@@ -12,7 +12,7 @@ USAGE:
 Note:
 - To quit the application, simply type 'quit'.
 
-Enjoy manipulating your equations!
+### Enjoy manipulating your equations!
 """
 
 
@@ -69,7 +69,7 @@ def main():
     print(f"Current equation: {lhs} = {rhs}")
 
     while True:
-        print(f"{lhs} = {rhs}")
+        print(f"\n{lhs} = {rhs}")
         user_input = input(" ")
         if user_input == 'quit':
             break
