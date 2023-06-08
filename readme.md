@@ -11,6 +11,8 @@ After starting the script, enter an algebraic equation in the form of 'lhs = rhs
 
 Type 'quit' to exit the script.
 
+If you want a message after each interaction set verbose = True in main.py
+
 Here is an example session:
 
 ```bash
