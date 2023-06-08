@@ -16,11 +16,14 @@ Note:
 """
 
 
+verbose = False
+
 def preprocess_equation(eq):
     processed_eq = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', eq)
     processed_eq = re.sub(r'(\d)(\()', r'\1*\2', processed_eq)
     processed_eq = re.sub(r'(\))([a-zA-Z\d])', r'\1*\2', processed_eq)
     return processed_eq
+
 
 def parse_input(user_input, lhs, rhs):
     if user_input == 'simplify':
@@ -58,6 +61,7 @@ def parse_input(user_input, lhs, rhs):
         message = "Invalid input"
     return lhs, rhs, message
 
+
 def main():
     print(usage)
     x = symbols('x')
@@ -75,7 +79,9 @@ def main():
             break
         else:
             lhs, rhs, message = parse_input(user_input, lhs, rhs)
-            print(message)
+            if verbose:
+                print(message)
+
 
 if __name__ == "__main__":
     main()
