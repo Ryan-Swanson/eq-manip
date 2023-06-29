@@ -1,53 +1,27 @@
+# Interactive Equation Manipulator
+
+This is a graphical user interface application that allows you to interactively manipulate algebraic equations.
 
 ## Usage
 
-After starting the script, enter an algebraic equation in the form of 'lhs = rhs' (e.g. 'x + 2 = 4'). 
+After starting the application, you will see an input box where you can enter an algebraic equation in the form of 'lhs = rhs' (e.g. 'x + 2 = 4'). 
 
 ### Supported Operations 
+
 - '+n', '-n', '*n', '/n' to add, subtract, multiply, or divide both sides of the equation by 'n'.
-- 'simplify' to simplify both sides of the equation.
-- 'expand' to expand both sides of the equation.
-- 'solve' to solve the equation for 'x'.
 
-Type 'quit' to exit the script.
+You can also check the "Verbose" checkbox if you want a message after each interaction.
 
-If you want a message after each interaction set verbose = True in main.py
+### Example Session
 
-Here is an example session:
+1. Start the application by running `python main.py`.
+2. In the input box, enter an equation like `3x+2=3` and press Enter.
+3. The current equation will be displayed in the output box.
+4. Enter `+5` in the input box and press Enter. The equation will be updated to `3*x + 7 = 8`.
+5. Enter `+3x**5` in the input box and press Enter. The equation will be updated to `3*x**5 + 3*x + 7 = 3*x**5 + 8`.
+6. Enter `/3x**7` in the input box and press Enter. The equation will be updated to `(3*x**5 + 3*x + 7)/(3*x**7) = (3*x**5 + 8)/(3*x**7)`.
+7. Enter `solve` in the input box and press Enter. The solution `x = [1/3]` will be displayed in the output box.
+8. Enter `-3` in the input box and press Enter. The equation will be updated to `-3 + (3*x**5 + 3*x + 7)/(3*x**7) = -3 + (3*x**5 + 8)/(3*x**7)`.
+9. Enter `solve` in the input box and press Enter. The solution `x = [1/3]` will be displayed in the output box.
 
-```bash
-❯ python main.py
-
-### INTERACTIVE EQUATION MANIPULATOR ###
-USAGE:
-- Enter an equation in the form of 'lhs = rhs' (e.g. 'x + 2 = 4')
-- You can use the following operators: +, -, *, /
-- You can use the following features: simplify, expand, solve
-- Symbolic manipulation is allowed
-
-Note:
-- To quit the application, simply type 'quit'.
-
-### Enjoy manipulating your equations!
-
-What equation would you like to work with? 3x+2=3
-Current equation: 3*x + 2 = 3
-3*x + 2 = 3
- +5
-Added 5 to both sides of the equation
-3*x + 7 = 8
- +3x**5
-Added 3*x**5 to both sides of the equation
-3*x**5 + 3*x + 7 = 3*x**5 + 8
- /3x**7
-Divided both sides of the equation by 3*x**7
-(3*x**5 + 3*x + 7)/(3*x**7) = (3*x**5 + 8)/(3*x**7)
- solve
-x = [1/3]
-(3*x**5 + 3*x + 7)/(3*x**7) = (3*x**5 + 8)/(3*x**7)
- -3
-Subtracted 3 from both sides of the equation
--3 + (3*x**5 + 3*x + 7)/(3*x**7) = -3 + (3*x**5 + 8)/(3*x**7)
- solve
-x = [1/3]
-```
+If an error occurs while processing your equation input, an error message will be displayed in red text below the input box.
