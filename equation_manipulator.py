@@ -9,7 +9,6 @@ class EquationManipulator(tk.Tk):
         super().__init__()
 
         self.title("Interactive Equation Manipulator")
-        self.geometry("400x400")
 
         self.verbose = tk.BooleanVar()
         self.verbose.set(verbose)
@@ -17,27 +16,35 @@ class EquationManipulator(tk.Tk):
         self.create_widgets()
         self.create_menu()
 
+        self.grid_columnconfigure(0, weight=1)
+        for i in range(6):
+            self.grid_rowconfigure(i, weight=1)
+
+        self.update_idletasks()
+
+        self.minsize(self.winfo_width(), self.winfo_height())
+
+
     def create_widgets(self):
         self.output_label = ttk.Label(self, text="Output:")
-        self.output_label.grid(column=0, row=0, padx=10, pady=10)
+        self.output_label.grid(column=0, row=0, padx=5, pady=5, sticky='w')
 
-        self.output_text = tk.Text(self, width=50, height=10)
-        self.output_text.grid(column=0, row=1, padx=10, pady=10)
+        self.output_text = tk.Text(self)
+        self.output_text.grid(column=0, row=1, padx=5, pady=5, sticky='nsew')
 
         self.input_label = ttk.Label(self, text="Enter your equation or action:")
-        self.input_label.grid(column=0, row=2, padx=10, pady=10)
+        self.input_label.grid(column=0, row=2, padx=5, pady=5, sticky='w')
 
-        self.input_entry = ttk.Entry(self, width=40)
-        self.input_entry.grid(column=0, row=3, padx=10, pady=10)
+        self.input_entry = ttk.Entry(self)
+        self.input_entry.grid(column=0, row=3, padx=5, pady=5, sticky='ew')
         self.input_entry.bind('<Return>', lambda event: self.submit_input())
 
         self.verbose_checkbutton = ttk.Checkbutton(self, text="Verbose", variable=self.verbose)
-        self.verbose_checkbutton.grid(column=0, row=4, padx=10, pady=10)
+        self.verbose_checkbutton.grid(column=0, row=4, padx=5, pady=5, sticky='w')
 
         self.error_label = ttk.Label(self, text="", foreground="red")
-        self.error_label.grid(column=0, row=5, padx=10, pady=10)
+        self.error_label.grid(column=0, row=5, padx=5, pady=5, sticky='w')
 
-    
     def create_menu(self):
         self.menubar = tk.Menu(self)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
