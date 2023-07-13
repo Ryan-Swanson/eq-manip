@@ -56,6 +56,7 @@ class EquationManipulator(tk.Tk):
         messagebox.showinfo("Usage", usage)
 
     def submit_input(self):
+        self.error_label['text'] = ''
         user_input = self.input_entry.get()
         self.input_entry.delete(0, tk.END)
         try:
