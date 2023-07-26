@@ -40,6 +40,14 @@ class EquationManipulator(tk.Tk):
         self.input_entry.bind('<Return>', lambda event: self.submit_input())
 
         self.verbose_checkbutton = ttk.Checkbutton(self, text="Verbose", variable=self.verbose)
+        self.simplify_button = ttk.Button(self, text="Simplify", command=self.simplify_equation)
+        self.simplify_button.grid(column=0, row=4, padx=5, pady=5, sticky='w')
+
+        self.expand_button = ttk.Button(self, text="Expand", command=self.expand_equation)
+        self.expand_button.grid(column=0, row=4, padx=5, pady=5, sticky='')
+
+        self.solve_button = ttk.Button(self, text="Solve", command=self.solve_equation)
+        self.solve_button.grid(column=0, row=4, padx=5, pady=5, sticky='e')
         self.verbose_checkbutton.grid(column=0, row=4, padx=5, pady=5, sticky='w')
 
         self.error_label = ttk.Label(self, text="", foreground="red")
@@ -83,6 +91,25 @@ class EquationManipulator(tk.Tk):
         self.input_entry.focus_set()
 
     def is_valid_expression(self, expr):
+        # Check if the expression is valid
+        try:
+            parse_expr(expr)
+            return True
+        except Exception:
+            return False
+    def simplify_equation(self):
+        self.submit_operation('simplify')
+
+    def expand_equation(self):
+        self.submit_operation('expand')
+
+    def solve_equation(self):
+        self.submit_operation('solve')
+
+    def submit_operation(self, operation):
+        self.input_entry.delete(0, tk.END)
+        self.input_entry.insert(0, operation)
+        self.submit_input()
         # Check if the expression is valid
         try:
             parse_expr(expr)
