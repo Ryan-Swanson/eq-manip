@@ -2,10 +2,15 @@ import re
 from sympy import symbols, Eq, solve, parse_expr
 
 def preprocess_equation(eq):
+    print(f'Preprocessing equation: {eq}')
+    eq = eq.replace(" ", "")
+    eq = eq.replace("^", "**")
     processed_eq = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', eq)
     processed_eq = re.sub(r'(\d)(\()', r'\1*\2', processed_eq)
     processed_eq = re.sub(r'(\))([a-zA-Z\d])', r'\1*\2', processed_eq)
+    print(f'Preprocessed equation: {processed_eq}')
     return processed_eq
+
 
 def parse_input(user_input, lhs, rhs):
     if user_input == 'simplify':
